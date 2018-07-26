@@ -26,8 +26,7 @@ export class DAO {
      * update data in contact database
      */
     public static updateEntry(http: HttpClient, id: number, nom : string, prenom: string, tel:string) : void {
-
-        let baseURI : string  = "http://localhost/ionic-contact-app/";
+        let baseURI: string = "http://localhost/ionic-contact-app/";
         let headers: any = new HttpHeaders({'ContentType': 'application/json', responseType: 'json'}),
             options: any = {
                 "key": "update",
@@ -37,12 +36,10 @@ export class DAO {
                 "tel": tel
             },
             url: any = baseURI + "manage-data.php";
-
         http.post(url, JSON.stringify(options), headers)
             .subscribe((data: any) => {
                 // If the request was successful notify the user
-                console.log(JSON.parse(data));
-                console.log(data);
+
             });
     }
 

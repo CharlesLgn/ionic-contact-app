@@ -85,16 +85,21 @@ export class HomePage {
                     text: 'Save',
                     handler: data => {
                         if (data.nom == '' || data.prenom == '' || data.num == ''){
-                            this.showToast();
+                            this.showToastInfo();
                             return false;
                         } else {
-                            if (place === -1) {
-                                DAO.createEntry(this.http, data.nom, data.prenom, data.num);
-                                this.load();
-                            } else {
-                                DAO.updateEntry(this.http, data.id, data.nom, data.prenom, data.num);
-                                this.load();
+                            try {
+                                if (place === -1) {
+                                    DAO.createEntry(this.http, data.nom, data.prenom, data.num);
+                                    this.load();
+                                } else {
+                                    DAO.updateEntry(this.http, data.id, data.nom, data.prenom, data.num);
+                                    this.load();
+                                }
+                            } catch (e) {
+                                this.showToastError();
                             }
+
                         }
                     }
                 }
@@ -111,7 +116,10 @@ export class HomePage {
         this.navCtrl.popTo(ConnectionPage);
     }
 
-    showToast() {
+    /**
+     * inform the user that some fields are empty
+     */
+    showToastInfo() {
         const toast = this.toastCtrl.create({
             message: 'you must fill all fields',
             position: 'bottom',
@@ -119,6 +127,19 @@ export class HomePage {
         });
         toast.present();
     }
+
+    /**
+     * inform the user that an error in back appear
+     */
+    showToastError() {
+        const toast = this.toastCtrl.create({
+            message: 'Something went wrong :(',
+            position: 'bottom',
+            duration: 2000
+        });
+        toast.present();
+    }
+
 
     /**
      * deeper than findIndex

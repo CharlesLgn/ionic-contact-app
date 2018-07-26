@@ -3,7 +3,7 @@
    $hn      = '127.0.0.1';
    $un      = 'root';
    $pwd     = '';
-   $db      = 'ligony2u_ionic_tuto';
+   $db      = 'ionic_tuto';
    $cs      = 'utf8';
 
    // Set up the PDO parameters

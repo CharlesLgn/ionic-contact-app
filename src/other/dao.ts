@@ -2,6 +2,9 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 export class DAO {
 
+    /**
+     * insert new data in contact database
+     */
     public static createEntry(http: HttpClient, nom : string, prenom: string, tel:string) : void {
         let baseURI : string  = "http://127.0.0.1/ionic-contact-app/";
         let headers: any = new HttpHeaders({'ContentType': 'json', responseType: 'text'}),
@@ -19,6 +22,9 @@ export class DAO {
             });
     }
 
+    /**
+     * update data in contact database
+     */
     public static updateEntry(http: HttpClient, id: number, nom : string, prenom: string, tel:string) : void {
 
         let baseURI : string  = "http://localhost/ionic-contact-app/";
@@ -40,7 +46,9 @@ export class DAO {
             });
     }
 
-
+    /**
+     * verify user and password in DB
+     */
     public static verifyPasword(http: HttpClient, user: string, pasword: string) : boolean {
         let baseURI : string  = "http://localhost/ionic-contact-app/";
         let headers: any = new HttpHeaders({responseType: 'json'}),

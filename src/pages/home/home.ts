@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {AlertController, NavController, ToastController} from 'ionic-angular';
-import {Contact} from "../../class/model";
-import {ConnectionPage} from "../conection/connection";
+import {Contact} from "../../other/model";
+import {ConnectionPage} from "../connection/connection";
 import {HttpClient} from "@angular/common/http";
-import {DAO} from "../../class/dao";
+import {DAO} from "../../other/dao";
 
 @Component({
     selector: 'page-home',
@@ -23,10 +23,6 @@ export class HomePage {
     /**
      * Triggered when template view is about to be entered
      * Returns and parses the PHP data through the load() method
-     *
-     * @public
-     * @method ionViewWillEnter
-     * @return {None}
      */
     ionViewWillEnter() : void {
         this.load();
@@ -36,10 +32,6 @@ export class HomePage {
      * Retrieve the JSON encoded data from the remote server
      * Using Angular's Http class and an Observable - then
      * assign this to the items array for rendering to the HTML template
-     *
-     * @public
-     * @method load
-     * @return {None}
      */
     load() : void {
         this.items = [];
@@ -55,6 +47,9 @@ export class HomePage {
                 });
     }
 
+    /**
+     * insert or update data
+     */
     public add(id:number, nom :string, prenom :string, num :string) {
         const place = this.deepIndexOf(this.items, (new Contact(id, nom, prenom, num)));
 
@@ -93,13 +88,12 @@ export class HomePage {
                             this.showToast();
                             return false;
                         } else {
-                            const contact = new Contact(data.id, data.nom, data.prenom, data.num);
                             if (place === -1) {
                                 DAO.createEntry(this.http, data.nom, data.prenom, data.num);
-                                this.load()
-
+                                this.load();
                             } else {
-                                this.items[place] = contact;
+                                DAO.updateEntry(this.http, data.id, data.nom, data.prenom, data.num);
+                                this.load();
                             }
                         }
                     }
@@ -110,6 +104,9 @@ export class HomePage {
     }
 
 
+    /**
+     * disconnect to the app
+     */
     public goConnectionPage() {
         this.navCtrl.popTo(ConnectionPage);
     }
@@ -123,6 +120,9 @@ export class HomePage {
         toast.present();
     }
 
+    /**
+     * deeper than findIndex
+     **/
     private deepIndexOf(arr, obj) {
         return arr.findIndex(function (cur) {
             return Object.keys(obj).every(function (key) {

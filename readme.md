@@ -9,28 +9,28 @@ I use easyPHP for the database with this two table :
 CONTACT
 <table>
     <tr>
-        <td><b>id</b></tr>
-        <td>first_name</tr>
-        <td>last_name</tr>
-        <td>tel</tr>
+        <td><b>id</b></td>
+        <td>first_name</td>
+        <td>last_name</td>
+        <td>tel</td>
     </tr>
     <tr>
-        <td>1</tr>
-        <td>Smith</tr>
-        <td>James</tr>
-        <td>012345678</tr>
+        <td>1</td>
+        <td>Smith</td>
+        <td>James</td>
+        <td>012345678</td>
     </tr>
 </table>
 
 USER
 <table>
     <tr>
-        <td><b>user</b></tr>
-        <td>pasword</tr>
+        <td><b>user</b></td>
+        <td>pasword</td>
     </tr>
     <tr>
-        <td>root</tr>
-        <td>root</tr>
+        <td>root</td>
+        <td>root</td>
     </tr>
 </table>
 

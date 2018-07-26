@@ -1,3 +1,27 @@
 page-home {
+  #topButtons {
+    display: flex;
+    flex-direction: row;
+  }
+  #topButtons button {
+    flex: 1;
+  }
 
+  #list {
+    text-align:  justify;
+    display: flex;
+    flex-direction: row;
+  }
+
+  table {
+    max-width: 90%;
+    min-width: 90%;
+  }
+  tr {
+  }
+
+  td {
+    max-width: 30%;
+    min-width: 30%;
+  }
 }

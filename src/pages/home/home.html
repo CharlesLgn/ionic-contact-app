@@ -1,14 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar hideBackButton="true">
+    <ion-title>Contact</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <table>
+    <div id="list">
+      <ion-card>
+        <ion-card-header>
+          <tr ion-item>
+            <td padding><b>Nom</b></td>
+            <td padding><b>Prémon</b></td>
+            <td padding><b>Telephone</b></td>
+          </tr>
+        </ion-card-header>
+        <ion-list>
+          <tr *ngFor="let item of items">
+            <button ion-item item-start (click)="add(item.id, item.nom, item.prenom, item.num)">
+              <td padding>{{ item.nom }}</td>
+              <td padding>{{ item.prenom }}</td>
+              <td padding>{{ item.num }}</td>
+            </button>
+          </tr>
+        </ion-list>
+      </ion-card>
+    </div>
+  </table>
+  <div id="topButtons">
+    <button ion-button tabTitle="Add" (click)="add(-1,'','','')">add</button>
+    <button ion-button tabTitle="disconnect" (click)="goConnectionPage()">disconnect</button>
+  </div>
 </ion-content>
+
+

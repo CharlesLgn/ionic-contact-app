@@ -1,10 +1,29 @@
-#Ionic contact app
+# Ionic Contact app
 
-this app is an exercise  to understand how ionic can be used
+[![Ligony Charles](https://img.shields.io/badge/Charles-LinkedIn-1E90E7.svg)](https://www.linkedin.com/in/charles-ligony-893177134/)
 
+***
+
+This app is an exercise  to understand how ionic can be used  
 You can't use this app because there is no database.
 
+___The goal:___
+
+ - Understand how to use ionic
+ - create an app in one week
+
+***
+
+___Specification:___
+
+ - Back : `php`
+ - Front   : `Angular Ionic` : `html` + `css` + `ts`
+
 I use easyPHP for the database with this two table :
+
+***
+
+___Form of the BDD:___
 
 CONTACT
 <table>
@@ -34,4 +53,4 @@ USER
     </tr>
 </table>
 
-(this is an exemple)
+_(the data are an exemple)_
